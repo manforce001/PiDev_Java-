@@ -14,14 +14,9 @@ public class ReclamationUser
    
     private int id;
     private int id_user; 
-    private String nom ; 
-
-    public ReclamationUser(int id, int id_user, String nom) 
-    {
-        this.id = id;
-        this.id_user = id_user;
-        this.nom = nom;
-    }
+    private String sujet ; 
+    private String reclamation ; 
+    private String etat ; 
 
     public int getId() {
         return id;
@@ -29,6 +24,19 @@ public class ReclamationUser
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public ReclamationUser(int id, int id_user, String sujet, String reclamation, String etat) {
+        this.id = id;
+        this.id_user = id_user;
+        this.sujet = sujet;
+        this.reclamation = reclamation;
+        this.etat = etat;
+    }
+
+    @Override
+    public String toString() {
+        return "ReclamationUser{" + "id=" + id + ", id_user=" + id_user + ", sujet=" + sujet + ", reclamation=" + reclamation + ", etat=" + etat + '}';
     }
 
     public int getId_user() {
@@ -39,19 +47,32 @@ public class ReclamationUser
         this.id_user = id_user;
     }
 
-    public String getNom() {
-        return nom;
+    public String getSujet() {
+        return sujet;
     }
 
-    @Override
-    public String toString() {
-        return "ReclamationUser{" + "id=" + id + ", id_user=" + id_user + ", nom=" + nom + '}';
+    public void setSujet(String sujet) {
+        this.sujet = sujet;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getReclamation() {
+        return reclamation;
     }
-    
+
+    public void setReclamation(String reclamation) {
+        this.reclamation = reclamation;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+
+
     
    
    

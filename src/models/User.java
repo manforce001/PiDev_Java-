@@ -8,7 +8,20 @@ package models;
 public class User 
 {
     private int id;
-    private String nom, prenom;
+    private String nom;
+    private String prenom; 
+    private String email ; 
+    private String role; 
+    private String  telephone ; 
+
+    public User(int id, String nom, String prenom, String email, String role, String telephone) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.role = role;
+        this.telephone = telephone;
+    }
 
     public int getId() {
         return id;
@@ -34,15 +47,33 @@ public class User
         this.prenom = prenom;
     }
 
-    public User(int id, String nom, String prenom) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "Personne{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + '}';
+        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", role=" + role + ", telephone=" + telephone + '}';
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
     
     

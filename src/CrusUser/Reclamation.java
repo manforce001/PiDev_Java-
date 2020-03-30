@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CrudUser;
+package CrusUser;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -31,19 +31,26 @@ public class Reclamation
                 connection = (Connection) ConnectionUtil.conDB();
 
     }
-  public void ajouterReclamation( User p )
+ 
+     public void ajouterReclamation(ReclamationUser p)
     {
         try 
+        {   
+            String st = "INSERT INTO reclamation ( id, id_user, sujet,reclamation ,etat) VALUES (?,?,?,?,?)";
+            preparedStatement = (PreparedStatement) connection.prepareStatement(st);
+            preparedStatement.setInt(1, p.getId());
+            preparedStatement.setInt(2, p.getId_user());
+            preparedStatement.setString(3, p.getSujet());
+            preparedStatement.setString(4, p.getReclamation());
+            preparedStatement.setString(5, p.getEtat());
+            preparedStatement.executeUpdate();
+         } 
+        catch (SQLException ex) 
         {
-            Statement st = connection.createStatement();
-            String req="insert into reclamation values ("+p.getId()+", '"+p.getId()+"', '"+p.getPrenom()+"')";
-            st.executeUpdate(req);
-        } catch (SQLException ex) 
-        {
-            System.out.println(ex.toString());
-           
+             System.out.println(ex.getMessage());
+
         }
-     }
+   }
   public void supprimerReclamation(int id)
     {
         try 
@@ -61,14 +68,14 @@ public class Reclamation
 
         }
    }
-    public void modifierReclamation(int id, String nom)
+    public void modifierReclamation(int id, String reclamation)
     {
         try {
             
-            String req="update reclamation set nom =? where id=?"; 
+            String req="update reclamation set reclamation =? where id=?"; 
             preparedStatement = (PreparedStatement) connection.prepareStatement(req);
 
-            preparedStatement.setString(1, nom);
+            preparedStatement.setString(1, reclamation);
             preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
 
@@ -94,7 +101,7 @@ public class Reclamation
             
             while(rs.next()){
                 
-                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3));
+                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
              
                 ls.add(p);
             }
@@ -178,7 +185,7 @@ public class Reclamation
             ResultSet rs = connection.createStatement().executeQuery(req);
             while(rs.next()){
                 
-                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3));
+                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
              
                 ls.add(p);
             }

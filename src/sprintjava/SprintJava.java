@@ -5,8 +5,9 @@
  */
 package sprintjava;
 
-import CrudUser.Reclamation;
-import CrudUser.ServiceUser;
+import CrusUser.Reclamation;
+import CrusUser.ServiceUser;
+import models.ReclamationUser;
 import models.User;
 
 /**
@@ -20,21 +21,20 @@ public class SprintJava {
      */
     public static void main(String[] args)
     {
-         User p1 = new User(121, "lzalzllzl", "kekekek");
-     
+ User  p1 = new User(252, "test1", "test1", "test1", "test1", "test1");      
 
         ServiceUser srv = new ServiceUser();
-
-
-         System.out.println("insertion ");
-srv.ajouterpersonne(p1);
+        System.out.println("insertion ");
+        srv.ajouterpersonne(p1);
 //srv.modifierpersonne(121, "nasriii");
 //srv.supprimerpersonne(121);
-srv.afficherpersonne(); 
+        srv.afficherpersonne(); 
+        ReclamationUser p2 = new ReclamationUser(1, 252, "test1", "test1", "test1"); 
+
         Reclamation rec = new Reclamation(); 
-        rec.ajouterReclamation(p1);
+        rec.ajouterReclamation(p2);
         System.out.println(" nouveau test de reclamation");
         rec.afficherReclamation();
-        rec.rechercheReclamation(55);
+       
     }    
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CrudUser;
+package CrusUser;
 
 
 import com.mysql.jdbc.Connection;
@@ -40,11 +40,14 @@ public class ServiceUser
         {
             
              
-            String st = "INSERT INTO user ( id, nom, prenom) VALUES (?,?,?)";
+            String st = "INSERT INTO user ( id, nom, prenom,email ,role ,telephone) VALUES (?,?,?,?,?,?)";
             preparedStatement = (PreparedStatement) connection.prepareStatement(st);
             preparedStatement.setInt(1, p.getId());
             preparedStatement.setString(2, p.getNom());
             preparedStatement.setString(3, p.getPrenom());
+            preparedStatement.setString(4, p.getEmail());
+            preparedStatement.setString(5, p.getRole());
+            preparedStatement.setString(6, p.getTelephone());
             preparedStatement.executeUpdate();
           
 
@@ -60,10 +63,13 @@ public class ServiceUser
     {
         try {
             
-            String req="insert into user values (nom,prenom)VALUES (?,?)"; 
+            String req="insert into user values (nom,prenom,email ,role ,telephone)VALUES (?,?,?,?,?)"; 
             preparedStatement = (PreparedStatement) connection.prepareStatement(req);
             preparedStatement.setString(1, p.getNom()); 
             preparedStatement.setString(2, p.getPrenom());
+            preparedStatement.setString(3, p.getEmail());
+            preparedStatement.setString(4, p.getRole());
+            preparedStatement.setString(5, p.getTelephone());            
             preparedStatement.executeUpdate();
 
         } 
@@ -126,7 +132,7 @@ public class ServiceUser
             
             while(rs.next()){
                 
-                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3));
+                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6));
                 ls.add(p);
             }
             
@@ -182,7 +188,7 @@ public class ServiceUser
             
             while(rs.next()){
                 
-                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3));
+                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6));
                 ls.add(p);
             }
             
