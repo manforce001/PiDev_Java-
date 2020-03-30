@@ -5,8 +5,8 @@
  */
 package sprintjava;
 
-import CrusUser.Reclamation;
-import CrusUser.ServiceUser;
+import CrudUser.Reclamation;
+import CrudUser.ServiceUser;
 import models.User;
 
 /**
