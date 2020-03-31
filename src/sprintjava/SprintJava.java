@@ -6,6 +6,7 @@
 package sprintjava;
 
 import CrusUser.Reclamation;
+import CrusUser.ReponseReclamationAdmin;
 import CrusUser.ServiceUser;
 import models.ReclamationUser;
 import models.User;
@@ -29,12 +30,18 @@ public class SprintJava {
 //srv.modifierpersonne(121, "nasriii");
 //srv.supprimerpersonne(121);
         srv.afficherpersonne(); 
-        ReclamationUser p2 = new ReclamationUser(1, 252, "test1", "test1", "test1"); 
+        ReclamationUser p2 = new ReclamationUser(1, 252, "test1", "test1", "test1","eeee"); 
 
         Reclamation rec = new Reclamation(); 
         rec.ajouterReclamation(p2);
         System.out.println(" nouveau test de reclamation");
         rec.afficherReclamation();
+        ReponseReclamationAdmin s = new ReponseReclamationAdmin(); 
+        s.reponseReclamation(121,"valide", "valide");
+        System.out.println(" test reponse reclamation");
+        rec.afficherReclamation();
+        
+        
        
     }    
 }

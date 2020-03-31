@@ -36,13 +36,16 @@ public class Reclamation
     {
         try 
         {   
-            String st = "INSERT INTO reclamation ( id, id_user, sujet,reclamation ,etat) VALUES (?,?,?,?,?)";
+            String st = "INSERT INTO reclamation ( id, id_user, sujet,reclamation ,etat,reponse  ) VALUES (?,?,?,?,?,?)";
             preparedStatement = (PreparedStatement) connection.prepareStatement(st);
             preparedStatement.setInt(1, p.getId());
             preparedStatement.setInt(2, p.getId_user());
             preparedStatement.setString(3, p.getSujet());
             preparedStatement.setString(4, p.getReclamation());
             preparedStatement.setString(5, p.getEtat());
+            preparedStatement.setString(5, p.getReclamation());
+
+            
             preparedStatement.executeUpdate();
          } 
         catch (SQLException ex) 
@@ -101,7 +104,7 @@ public class Reclamation
             
             while(rs.next()){
                 
-                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
              
                 ls.add(p);
             }
@@ -185,7 +188,7 @@ public class Reclamation
             ResultSet rs = connection.createStatement().executeQuery(req);
             while(rs.next()){
                 
-                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+                ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5) , rs.getString(6));
              
                 ls.add(p);
             }

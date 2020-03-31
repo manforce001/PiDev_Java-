@@ -17,6 +17,21 @@ public class ReclamationUser
     private String sujet ; 
     private String reclamation ; 
     private String etat ; 
+    private String reponse  ; 
+
+    public ReclamationUser(int id, int id_user, String sujet, String reclamation, String etat, String reponse) {
+        this.id = id;
+        this.id_user = id_user;
+        this.sujet = sujet;
+        this.reclamation = reclamation;
+        this.etat = etat;
+        this.reponse = reponse;
+    }
+
+    @Override
+    public String toString() {
+        return "ReclamationUser{" + "id=" + id + ", id_user=" + id_user + ", sujet=" + sujet + ", reclamation=" + reclamation + ", etat=" + etat + ", reponse=" + reponse + '}';
+    }
 
     public int getId() {
         return id;
@@ -24,19 +39,6 @@ public class ReclamationUser
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public ReclamationUser(int id, int id_user, String sujet, String reclamation, String etat) {
-        this.id = id;
-        this.id_user = id_user;
-        this.sujet = sujet;
-        this.reclamation = reclamation;
-        this.etat = etat;
-    }
-
-    @Override
-    public String toString() {
-        return "ReclamationUser{" + "id=" + id + ", id_user=" + id_user + ", sujet=" + sujet + ", reclamation=" + reclamation + ", etat=" + etat + '}';
     }
 
     public int getId_user() {
@@ -71,10 +73,16 @@ public class ReclamationUser
         this.etat = etat;
     }
 
+    public String getReponse() {
+        return reponse;
+    }
 
-
+    public void setReponse(String reponse) {
+        this.reponse = reponse;
+    }
     
-   
+
+
    
     
     
