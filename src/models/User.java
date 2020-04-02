@@ -13,14 +13,18 @@ public class User
     private String email ; 
     private String role; 
     private String  telephone ; 
+    private String dateNa; 
+    private String password; 
 
-    public User(int id, String nom, String prenom, String email, String role, String telephone) {
+    public User(int id, String nom, String prenom, String email, String role, String telephone, String dateNa, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.role = role;
         this.telephone = telephone;
+        this.dateNa = dateNa;
+        this.password = password;
     }
 
     public int getId() {
@@ -63,11 +67,6 @@ public class User
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", role=" + role + ", telephone=" + telephone + '}';
-    }
-
     public String getTelephone() {
         return telephone;
     }
@@ -75,7 +74,29 @@ public class User
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-    
+
+    public String getDateNa() {
+        return dateNa;
+    }
+
+    public void setDateNa(String dateNa) {
+        this.dateNa = dateNa;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", role=" + role + ", telephone=" + telephone + ", dateNa=" + dateNa + ", password=" + password + '}';
+    }
+
+ 
     
     
     

@@ -40,7 +40,7 @@ public class ServiceUser
         {
             
              
-            String st = "INSERT INTO user ( id, nom, prenom,email ,role ,telephone) VALUES (?,?,?,?,?,?)";
+            String st = "INSERT INTO user ( id, nom, prenom,email ,role ,telephone,dateNa ,password) VALUES (?,?,?,?,?,?,?,?)";
             preparedStatement = (PreparedStatement) connection.prepareStatement(st);
             preparedStatement.setInt(1, p.getId());
             preparedStatement.setString(2, p.getNom());
@@ -48,6 +48,8 @@ public class ServiceUser
             preparedStatement.setString(4, p.getEmail());
             preparedStatement.setString(5, p.getRole());
             preparedStatement.setString(6, p.getTelephone());
+            preparedStatement.setString(7, p.getDateNa());
+            preparedStatement.setString(8, p.getPassword());
             preparedStatement.executeUpdate();
           
 
@@ -63,13 +65,15 @@ public class ServiceUser
     {
         try {
             
-            String req="insert into user values (nom,prenom,email ,role ,telephone)VALUES (?,?,?,?,?)"; 
+            String req="insert into user values (nom,prenom,email ,role ,telephone,dateNa ,password )VALUES (?,?,?,?,?,?,?)"; 
             preparedStatement = (PreparedStatement) connection.prepareStatement(req);
             preparedStatement.setString(1, p.getNom()); 
             preparedStatement.setString(2, p.getPrenom());
             preparedStatement.setString(3, p.getEmail());
             preparedStatement.setString(4, p.getRole());
-            preparedStatement.setString(5, p.getTelephone());            
+            preparedStatement.setString(5, p.getTelephone());    
+            preparedStatement.setString(5, p.getDateNa());
+            preparedStatement.setString(5, p.getPassword());
             preparedStatement.executeUpdate();
 
         } 
@@ -132,7 +136,7 @@ public class ServiceUser
             
             while(rs.next()){
                 
-                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6));
+                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
                 ls.add(p);
             }
             
@@ -149,17 +153,22 @@ public class ServiceUser
    /* retourner le noombre d'utlisateur*/
      public int NbUtilisateurRole(String role)
    {
+       int nb =0; 
         try {
             
-            String req="select * from reclamation where role=? "; 
+            String req="select * from user where role=? "; 
             preparedStatement = (PreparedStatement) connection.prepareStatement(req);
 
      
             preparedStatement.setString(1, role);
-            preparedStatement.executeQuery();
-           return    preparedStatement.getMaxRows(); 
+           ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                
+                nb++; 
+            }
+            
 
-           
+           return  nb ; 
                        
 
         } 
@@ -188,7 +197,7 @@ public class ServiceUser
             
             while(rs.next()){
                 
-                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6));
+                User p = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
                 ls.add(p);
             }
             

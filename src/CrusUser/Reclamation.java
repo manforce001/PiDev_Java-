@@ -43,7 +43,7 @@ public class Reclamation
             preparedStatement.setString(3, p.getSujet());
             preparedStatement.setString(4, p.getReclamation());
             preparedStatement.setString(5, p.getEtat());
-            preparedStatement.setString(5, p.getReclamation());
+            preparedStatement.setString(6, p.getReclamation());
 
             
             preparedStatement.executeUpdate();
@@ -179,18 +179,22 @@ public class Reclamation
        /* retourner la liste de reclamation d'un utlisateur donnée*/        
         public void afficherReclamationUser(int id_user )
    {
+                   List<ReclamationUser> ls =new ArrayList<ReclamationUser>();
+
         try {
             
-            List<ReclamationUser> ls =new ArrayList<ReclamationUser>();
-            String req="select * from reclamation where id_user=? "; 
+            String req="select * from reclamation "; 
             preparedStatement.setInt(1, id_user);
             preparedStatement = (PreparedStatement) connection.prepareStatement(req);
             ResultSet rs = connection.createStatement().executeQuery(req);
             while(rs.next()){
                 
                 ReclamationUser p = new ReclamationUser(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5) , rs.getString(6));
-             
-                ls.add(p);
+                if (rs.getInt(2)==id_user)
+                {
+                            ls.add(p);
+
+                }
             }
             
             for (ReclamationUser p : ls)
